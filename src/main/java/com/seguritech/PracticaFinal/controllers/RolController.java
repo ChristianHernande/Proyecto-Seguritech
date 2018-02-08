@@ -28,9 +28,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RestController
 public class RolController {
     
-   @Autowired
-    private RolService rolService;
+    private final RolService rolService;
 
+    public RolController(RolService rolService) {
+        this.rolService = rolService;
+    }
+    
     @GetMapping(value = "/rol")
     public List<Rol> listAll() {
         List<Rol> roles = rolService.findAll();
